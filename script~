@@ -1,0 +1,23 @@
+#!/bin/bash
+ARRAY=()
+for i in {0..0}
+do
+    for x in {0..15}
+    do
+	#echo training fn $x
+	z=0
+	while [ $z -eq 0 ] || [ $z -eq 50000 ]
+	do
+	    z=$(./train train$x | tail -n 1 | tr -s ' ' | cut -d ' ' -f 2)
+	    z=$(echo "${z%?}")
+	done
+	#ARRAY[$x]+=$z
+	echo $z >> epochs$x 
+    done
+done
+
+#for x in {0..15}
+#do 
+#    echo fn $x
+#    echo ${ARRAY[$x]}
+#done
