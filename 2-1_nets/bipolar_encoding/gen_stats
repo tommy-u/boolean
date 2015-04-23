@@ -1,0 +1,25 @@
+#!/bin/bash
+file=$1
+acum=0
+count=0
+#Get Sum Vals
+while read p; do
+    ((count+=1))
+    acum=$(bc <<<"$acum + $p")
+done <$file
+
+avg=$(bc<<<"scale=3; $acum / $count")
+
+#Get Sum Residuals
+acum=0
+while read p; do
+    resid=$(bc <<<"$avg - $p")
+    acum=$(bc <<<"$acum + ($resid * $resid) ")
+done <$file
+
+var=$(bc<<<"scale=3; $acum / $count")
+
+std=$(bc<<<"scale=3; sqrt($var)")
+
+echo avg: $avg
+echo std: $std

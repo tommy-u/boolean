@@ -1,0 +1,3 @@
+removing function 6 and 9, xor and -xor because they are not linearly separable and won't train
+can train everything except 6 and 9.
+
