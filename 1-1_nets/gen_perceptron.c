@@ -1,6 +1,8 @@
 #include "fann.h"
 #include <stdio.h>
-//braindead program. sorry, I'm tired
+//somewhere with fann installed, compile with
+//gcc gen_perceptron.c -Wall -lfann -o percep
+
 int main(int argc, char* argv[])
 {
   struct fann *ann = fann_create_standard(2,1,1);
