@@ -1,0 +1,16 @@
+#!/bin/bash
+
+for x in {0..15}
+do
+    for i in {0..50}
+    do
+	z=0
+	while [ $z -eq 0 ] || [ $z -eq 50000 ]
+	do
+	    z=$(./train train$x | tail -n 1 | tr -s ' ' | cut -d ' ' -f 2)
+	    z=$(echo "${z%?}")
+	done
+	echo $z >> epochs$x 
+    done
+done
+
