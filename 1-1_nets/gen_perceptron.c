@@ -18,16 +18,17 @@ int main(int argc, char* argv[])
   for(i=0;i<1000000;i++)
     {
       fann_randomize_weights(ann, -1, 1 );
-      input[0] = -1;
+      //!!!!!!!!!!!!!!
+      //Set this to 0 for binary, -1 for bipolar
+      input[0] = 0;
+      //!!!!!!!!!!!!!!
       calc_out = fann_run(ann, input);  
       out_0 = calc_out[0];
-      //      printf("percep(%f) -> %f\n", input[0], calc_out[0]);
+
       
       input[0] = 1;
       calc_out = fann_run(ann, input);
       out_1 = calc_out[0];
-      //      printf("percep(%f) -> %f\n", input[0], calc_out[0]);
-  
 
       count ++;
       if(out_0==0)
