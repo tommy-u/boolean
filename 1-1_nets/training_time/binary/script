@@ -1,0 +1,30 @@
+#!/bin/bash
+#have to change this so we don't run for 6 or 9 because while will never finish
+#samples=50
+#max_function=15
+#loop over functions
+
+rm epoch*
+rm fail_conv_record
+max_epochs=50000
+for x in {0..3}
+do
+        #how many times did the function fail to converge? 
+    num_fail_conv=0
+    #many samples of each
+    for i in {0..100}
+    do
+	z=0
+	#if training does not converge, rerun
+	while [ "$z" -eq 0 ] || [ "$z" -eq $max_epochs ]
+	do
+	    (("$z" >= "$max_epochs" )) && ((num_fail_conv+=1))
+  
+	    z=$(./train train$x | tail -n 1 | tr -s ' ' | cut -d ' ' -f 2)
+	    z=$(echo "${z%?}")
+	done
+	echo $z >> epochs$x 
+    done
+    echo f$x $num_fail_conv >> fail_conv_record
+done
+

@@ -7,10 +7,10 @@
 rm epoch*
 rm fail_conv_record
 max_epochs=50000
-for x in {0..3}
+for x in {0..15}
 do
-#    [ "$x" -eq 6 ] && continue
-#    [ "$x" -eq 9 ] && continue
+    [ "$x" -eq 6 ] && continue
+    [ "$x" -eq 9 ] && continue
         #how many times did the function fail to converge? 
     num_fail_conv=0
     #many samples of each
