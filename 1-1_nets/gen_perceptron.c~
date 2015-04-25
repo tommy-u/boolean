@@ -3,31 +3,34 @@
 //braindead program. sorry, I'm tired
 int main(int argc, char* argv[])
 {
-  const unsigned int num_layers = 2;
-  const unsigned int num_input = 1;
-  const unsigned int num_output = 1;
-  struct fann *ann = fann_create_standard(num_layers, num_input, num_output);
+  struct fann *ann = fann_create_standard(2,1,1);
   fann_set_activation_function_output(ann, FANN_THRESHOLD);
-  fann_type *calc_out;
-  fann_type input[2];
-  
-  
-  int out_0, out_1, i;
-  int count = 0;
-  int fn_counter[4] = {0, 0, 0, 0};
+  fann_type *calc_out, false_encoding, true_encoding, *in_0, *in_1;
+  int out_0, out_1, i, count = 0, fn_counter[4] = {0, 0, 0, 0};
+
+  //Set false_encoding to 0 for binary, -1 for bipolar (with true_encoding set to 1)
+  false_encoding= 0;
+  true_encoding = 199;
+  //Extra credit: 
+  //By a symmetry argument (vertical angle thm), f0 and f3 must have the same probability.
+  //That in mind and with false_encoding set to 0, the value of true_encoding can be used to select 
+  //the probability for a given function region.
+  //As true_encoding -> positive infinity, p(f1) = p(f2) -> .25 
+  //As true_encoding -> 0 p(f1) = p(f2) -> 0
+
+  //Wants an array in general ... 
+  //  in_0 = &false_encoding;
+  //in_1 = &true_encoding;
+  //it's called fast for a reason.
   for(i=0;i<1000000;i++)
     {
-      fann_randomize_weights(ann, -1, 1 );
-      input[0] = -1;
-      calc_out = fann_run(ann, input);  
+      fann_randomize_weights(ann, -1, 1);
+
+      calc_out = fann_run(ann, &false_encoding);  
       out_0 = calc_out[0];
-      //      printf("percep(%f) -> %f\n", input[0], calc_out[0]);
       
-      input[0] = 1;
-      calc_out = fann_run(ann, input);
+      calc_out = fann_run(ann, &true_encoding);
       out_1 = calc_out[0];
-      //      printf("percep(%f) -> %f\n", input[0], calc_out[0]);
-  
 
       count ++;
       if(out_0==0)
