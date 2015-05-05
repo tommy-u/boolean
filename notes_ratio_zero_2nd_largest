@@ -1,0 +1,23 @@
+Ratio between zero function solution space and 2nd largest function (zero_fn_space/2nd_largest)
+
+1 input
+
+Binary
+0.375079 /  0.124615 = 3.0099 times bigger
+Bipolar
+ 0.250335 / 0.249650 = 1.0027 times bigger
+
+2 input
+
+Binary
+0.270937 / 0.042041 = 6.4445 times bigger
+
+Bipolar
+0.083538 / 0.083406 = 1.0015 times bigger
+
+3 inputs
+
+Binary
+0.190092 / 0.015683 = 12.1208 times bigger
+Bipolar
+0.020853 / 0.020891 = 0.9981 times bigger

@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
   int out_0, out_1, i, count = 0, fn_counter[4] = {0, 0, 0, 0};
 
   //Set false_encoding to 0 for binary, -1 for bipolar (with true_encoding set to 1)
-  false_encoding= 0;
+  false_encoding= -1;
   true_encoding = 1;
   //Extra credit: 
   //By a symmetry argument (vertical angle thm), f0 and f3 must have the same probability.

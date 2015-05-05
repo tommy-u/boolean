@@ -12,8 +12,8 @@ int main(int argc, char* argv[])
   for(i=0;i<16;i++)
     fn_counter[i] = 0;
   //Switch binary or bipolar representation
-  //  fann_type arr[4][2] = { {0,0}, {0,1}, {1,0}, {1,1} };
-  fann_type arr[4][2] = { {-1,-1}, {-1,1}, {1,-1}, {1,1} };
+  //    fann_type arr[4][2] = { {0,0}, {0,1}, {1,0}, {1,1} };
+    fann_type arr[4][2] = { {-1,-1}, {-1,1}, {1,-1}, {1,1} };
 
   for(i=0;i<1000000;i++)
     {
